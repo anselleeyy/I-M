@@ -52,7 +52,12 @@
 			<artifactId>lombok</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		
+
+		 <dependency>
+		 	<groupId>cn.ltysyn</groupId>
+		 	<artifactId>infiniti-common</artifactId>
+		 	<version>0.0.1</version>
+		 </dependency>
 	</dependencies>
 
 	<build>
