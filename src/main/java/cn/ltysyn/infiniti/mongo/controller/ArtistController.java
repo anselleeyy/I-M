@@ -4,17 +4,36 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import cn.ltysyn.infiniti.common.utils.Response;
+import cn.ltysyn.infiniti.common.utils.ReturnCode;
 import cn.ltysyn.infiniti.mongo.entity.Artist;
 
 @RestController
-@RequestMapping(value = "/artist")
+@RequestMapping(value = "/api/artists")
 public class ArtistController extends BaseController {
 	
-	@GetMapping(value = "/")
-	public List<Artist> getAllArtists() {
-		return artistService.getAllArtists();
+	@GetMapping
+	public Object getAllArtists() {
+		List<Artist> artists = artistService.getAllArtists();
+		Response response = new Response(ReturnCode.ARTIST_INFO_GOT, artists);
+		return response.getJsonString();
+	}
+	
+	@GetMapping(value = "/", params = "artistName")
+	public Object getArtistByName(@RequestParam(value = "artistName", defaultValue = "", required = true) String artistName) {
+		Artist artist = artistService.getArtistByArtistName(artistName);
+		Response response = new Response(ReturnCode.ARTIST_INFO_GOT, artist);
+		return response.getJsonString();
+	}
+	
+	@GetMapping(value = "/", params = "artistId")
+	public Object getArtistById(@RequestParam(value = "artistId", required = true) int artistId) {
+		Artist artist = artistService.getArtistByArtistId(artistId);
+		Response response = new Response(ReturnCode.ARTIST_INFO_GOT, artist);
+		return response.getJsonString();
 	}
 
 }
