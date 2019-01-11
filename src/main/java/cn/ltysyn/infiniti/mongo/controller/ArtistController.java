@@ -10,9 +10,11 @@ import org.springframework.web.bind.annotation.RestController;
 import cn.ltysyn.infiniti.common.utils.Response;
 import cn.ltysyn.infiniti.common.utils.ReturnCode;
 import cn.ltysyn.infiniti.mongo.entity.Artist;
+import io.swagger.annotations.Api;
 
 @RestController
 @RequestMapping(value = "/api/artists")
+@Api(value = "歌手 Controller")
 public class ArtistController extends BaseController {
 	
 	@GetMapping
