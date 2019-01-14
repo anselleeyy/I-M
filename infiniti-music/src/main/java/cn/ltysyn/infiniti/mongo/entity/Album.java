@@ -2,12 +2,11 @@ package cn.ltysyn.infiniti.mongo.entity;
 
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import cn.ltysyn.infiniti.common.utils.Constant;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
-public class Album extends BaseEntity {
+public class Album {
 	
 	@Field(value = "name")
 	private String albumName;
@@ -30,6 +29,6 @@ public class Album extends BaseEntity {
 	private String company;
 	
 	public String getPicUrl() {
-		return NGINX_LOCATION + this.picUrl;
+		return Constant.NGINX_URL + this.picUrl;
 	}
 }

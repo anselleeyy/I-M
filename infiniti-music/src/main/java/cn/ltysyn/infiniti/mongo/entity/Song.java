@@ -2,12 +2,11 @@ package cn.ltysyn.infiniti.mongo.entity;
 
 import org.springframework.data.mongodb.core.mapping.Field;
 
+import cn.ltysyn.infiniti.common.utils.Constant;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 @Data
-@EqualsAndHashCode(callSuper = false)
-public class Song extends BaseEntity {
+public class Song {
 	
 	@Field(value = "name")
 	private String songName;
@@ -20,6 +19,6 @@ public class Song extends BaseEntity {
 	private String lyric;
 	
 	public String getMp3Url() {
-		return NGINX_LOCATION + this.mp3Url;
+		return Constant.NGINX_URL + this.mp3Url;
 	}
 }
