@@ -10,16 +10,20 @@ import org.springframework.web.bind.annotation.RestController;
 import cn.ltysyn.infiniti.common.utils.Response;
 import cn.ltysyn.infiniti.common.utils.ReturnCode;
 import cn.ltysyn.infiniti.mongo.entity.Album;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping(value = "/api/albums")
+@RequestMapping(value = "/albums")
 @CrossOrigin
+@Api(value = "专辑控制器")
 public class AlbumController extends BaseController {
 
 	@GetMapping
+	@ApiOperation(value = "获取所有专辑列表")
 	public Object getAllAlbums() {
 		List<Album> albums = albumService.getAllAlbums();
-		Response response = new Response(ReturnCode.ARTIST_INFO_GOT, albums);
+		Response response = new Response(ReturnCode.ALBUM_LIST_GOT, albums);
 		return response;
 	}
 	

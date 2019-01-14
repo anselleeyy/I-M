@@ -2,7 +2,10 @@ package cn.ltysyn.infiniti.common.utils;
 
 public enum ReturnCode {
 	
-	ARTIST_INFO_GOT(10000, "歌手信息获取成功");
+	ARTIST_LIST_GOT(10001, "歌手列表获取成功"),
+	ARTIST_INFO_GOT(10002, "歌手信息获取成功"),
+	ALBUM_LIST_GOT(10003, "专辑列表获取成功"),
+	ALBUM_INFO_GOT(10004, "专辑信息获取成功");
 	
 	private int code;
 	

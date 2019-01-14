@@ -20,7 +20,7 @@ public class ArtistController extends BaseController {
 	@GetMapping
 	public Object getAllArtists() {
 		List<Artist> artists = artistService.getAllArtists();
-		Response response = new Response(ReturnCode.ARTIST_INFO_GOT, artists);
+		Response response = new Response(ReturnCode.ARTIST_LIST_GOT, artists);
 		return response.getJsonString();
 	}
 	
