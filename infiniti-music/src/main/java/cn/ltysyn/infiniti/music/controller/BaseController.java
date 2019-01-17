@@ -1,10 +1,11 @@
-package cn.ltysyn.infiniti.mongo.controller;
+package cn.ltysyn.infiniti.music.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import cn.ltysyn.infiniti.mongo.service.IAlbumService;
-import cn.ltysyn.infiniti.mongo.service.IArtistService;
-import cn.ltysyn.infiniti.mongo.service.ISongService;
+
+import cn.ltysyn.infiniti.music.service.IAlbumService;
+import cn.ltysyn.infiniti.music.service.IArtistService;
+import cn.ltysyn.infiniti.music.service.ISongService;
 
 @Component
 public class BaseController {

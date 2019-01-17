@@ -2,12 +2,25 @@ server:
   port: 10075
   servlet:
     context-path: /api/v1
-  
 
 spring:
-  data:
-    mongodb:
-      uri: mongodb://10.11.124.102:27017/music
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://10.11.124.102:3306/infiniti?characterEncoding=utf8&useSSL=false
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      username: ansel
+      password: Ansel0428!
+  jpa:
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    properties:
+      hibernate: 
+        dialect: org.hibernate.dialect.MySQL8Dialect
   application:
     name: MUSIC_SERVER
 
