@@ -30,6 +30,7 @@ public class Song implements Serializable {
 	
 	private String mp3Url;
 	
+	@Column(length = 5000)
 	private String lyric;
 	
 	private long albumId;

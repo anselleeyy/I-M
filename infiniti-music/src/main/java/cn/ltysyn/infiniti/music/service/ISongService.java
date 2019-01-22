@@ -6,8 +6,8 @@ import cn.ltysyn.infiniti.music.entity.Song;
 
 public interface ISongService {
 	
-	List<Song> getAllSongs();
+	List<Song> getAll();
 	
-	Song getById(long id);
+	Song getById(Long id);
 
 }

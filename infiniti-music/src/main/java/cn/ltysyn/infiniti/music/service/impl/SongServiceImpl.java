@@ -11,15 +11,15 @@ import cn.ltysyn.infiniti.music.service.ISongService;
 public class SongServiceImpl extends BaseService implements ISongService {
 
 	@Override
-	public List<Song> getAllSongs() {
+	public List<Song> getAll() {
 		// TODO Auto-generated method stub
 		return songDao.findAll();
 	}
 
 	@Override
-	public Song getById(long id) {
+	public Song getById(Long id) {
 		// TODO Auto-generated method stub
-		return songDao.getOne(id);
+		return songDao.findBySongId(id);
 	}
 
 }

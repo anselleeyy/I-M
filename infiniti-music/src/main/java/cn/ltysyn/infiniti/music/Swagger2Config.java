@@ -21,7 +21,7 @@ public class Swagger2Config {
 		return new Docket(DocumentationType.SWAGGER_2)
 				.apiInfo(apiInfo())
 				.select()
-				.apis(RequestHandlerSelectors.basePackage("cn.ltysyn.infiniti.mongo.controller"))
+				.apis(RequestHandlerSelectors.basePackage("cn.ltysyn.infiniti.music.controller"))
 				.paths(PathSelectors.any())
 				.build();
 	}
