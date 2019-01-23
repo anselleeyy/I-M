@@ -16,4 +16,10 @@ public class AlbumServiceImpl extends BaseService implements IAlbumService {
 		return albumDao.findAll();
 	}
 
+	@Override
+	public Album getByAlbumId(Long albumId) {
+		// TODO Auto-generated method stub
+		return albumDao.findByAlbumId(albumId);
+	}
+
 }

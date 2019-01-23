@@ -20,7 +20,7 @@ public class Artist implements Serializable {
 	@Id
 	@GeneratedValue(generator = "id")
 	@GenericGenerator(name = "id", strategy = "assigned")
-	private int artistId;
+	private Integer artistId;
 
 	@Column(length = 40)
 	private String artistName;

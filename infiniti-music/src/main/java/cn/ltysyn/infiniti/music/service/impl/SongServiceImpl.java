@@ -22,4 +22,10 @@ public class SongServiceImpl extends BaseService implements ISongService {
 		return songDao.findBySongId(id);
 	}
 
+	@Override
+	public List<Song> getByAlbumId(Long albumId) {
+		// TODO Auto-generated method stub
+		return songDao.findByAlbumId(albumId);
+	}
+
 }

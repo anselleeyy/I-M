@@ -9,5 +9,7 @@ public interface ISongService {
 	List<Song> getAll();
 	
 	Song getById(Long id);
+	
+	List<Song> getByAlbumId(Long albumId);
 
 }

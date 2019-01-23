@@ -23,7 +23,7 @@ public class Song implements Serializable {
 	@Id
 	@GeneratedValue(generator = "id")
 	@GenericGenerator(name = "id", strategy = "assigned")
-	private long songId;
+	private Long songId;
 	
 	@Column(length = 40)
 	private String songName;
@@ -33,7 +33,7 @@ public class Song implements Serializable {
 	@Column(length = 5000)
 	private String lyric;
 	
-	private long albumId;
+	private Long albumId;
 	
 	public String getMp3Url() {
 		return Constant.NGINX_URL + this.mp3Url;

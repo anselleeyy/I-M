@@ -21,7 +21,7 @@ public class Album implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long albumId;
+	private Long albumId;
 	
 	@Column(length = 500)
 	private String albumName;
@@ -42,7 +42,7 @@ public class Album implements Serializable {
 	
 	private String company;
 	
-	private int aritstId;
+	private Integer aritstId;
 	
 	public String getPicUrl() {
 		return Constant.NGINX_URL + this.picUrl;
