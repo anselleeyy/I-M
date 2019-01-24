@@ -23,8 +23,9 @@ public class SongController extends BaseController {
 	@GetMapping
 	@ApiOperation(value = "查询所有音乐列表")
 	public Object getAllSongs() {
-		List<Song> list = songService.getAll();
-		return list;
+		List<Song> songs = songService.getAll();
+		Response response = new Response(ReturnCode.SONG_LIST_GOT, songs);
+		return response;
 	}
 	
 	@GetMapping(value = "/{id}")

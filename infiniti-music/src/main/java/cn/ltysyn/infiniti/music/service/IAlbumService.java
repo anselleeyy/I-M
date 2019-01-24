@@ -9,5 +9,7 @@ public interface IAlbumService {
 	List<Album> getAllAlbums();
 	
 	Album getByAlbumId(Long albumId);
+	
+	List<Album> getByArtistId(Integer artistId);
 
 }

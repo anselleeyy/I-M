@@ -22,4 +22,10 @@ public class AlbumServiceImpl extends BaseService implements IAlbumService {
 		return albumDao.findByAlbumId(albumId);
 	}
 
+	@Override
+	public List<Album> getByArtistId(Integer artistId) {
+		// TODO Auto-generated method stub
+		return albumDao.findByAritstId(artistId);
+	}
+
 }
