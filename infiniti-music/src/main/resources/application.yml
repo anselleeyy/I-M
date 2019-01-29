@@ -4,6 +4,8 @@ server:
     context-path: /api/v1
 
 spring:
+  application:
+    name: api-music
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://10.11.124.102:3306/infiniti?characterEncoding=utf8&useSSL=false
@@ -21,8 +23,11 @@ spring:
     properties:
       hibernate: 
         dialect: org.hibernate.dialect.MySQL8Dialect
-  application:
-    name: MUSIC_SERVER
+  
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10070/eureka
 
 springfox: 
   documentation: 
