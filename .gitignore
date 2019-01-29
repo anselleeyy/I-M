@@ -23,13 +23,13 @@
 hs_err_pid*
 
 # java files
-target/
-.settings/*
-.project
-.classpath
+**/target/
+**/.settings/*
+**/.project
+**/.classpath
 
 # sts files
-.mvn
-mvnw*
+**/.mvn
+**/mvnw*
 
 
