@@ -31,5 +31,6 @@ hs_err_pid*
 # sts files
 **/.mvn
 **/mvnw*
+**/bin/*
 
 
