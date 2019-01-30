@@ -2,19 +2,21 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.1.2.RELEASE</version>
+		<relativePath /> <!-- lookup parent from repository -->
+	</parent>
 	<groupId>cn.ltysyn</groupId>
 	<artifactId>infiniti-common</artifactId>
 	<version>0.0.1</version>
 	<name>infiniti-common</name>
+	<packaging>pom</packaging>
 	<description>INFINITI COMMON COMPONENT</description>
 
-	<dependencies>
-
-		<!-- https://mvnrepository.com/artifact/com.google.code.gson/gson -->
-		<dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-			<version>2.8.5</version>
-		</dependency>
-	</dependencies>
+	<modules>
+		<module>db-core</module>
+		<module>api-utils</module>
+	</modules>
 </project>

@@ -4,12 +4,12 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>cn.ltysyn</groupId>
-		<artifactId>infiniti-componet</artifactId>
+		<artifactId>infiniti-common</artifactId>
 		<version>0.0.1</version>
 	</parent>
 	<artifactId>db-core</artifactId>
 	<name>db-core</name>
-	<description>数据库核心逻辑</description>
+	<description>数据库核心组件</description>
 
 	<dependencies>
 		<!-- 加入redis的处理 -->

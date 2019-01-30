@@ -3,29 +3,14 @@ package cn.ltysyn.infiniti.common.utils;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
-import com.google.gson.Gson;
-
 public class Response implements Serializable {
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -5334785475299942184L;
-	
-	private static final Gson GSON = new Gson();
 
-	private static final String NULL_JSON_RETURN = "[]";
-	
-	private static String jsonResponse(final Object object) {
-		if (object == null) {
-			return NULL_JSON_RETURN;
-		}
-		return GSON.toJson(object);
-	}
-	
-	public String getJsonString() {
-        return jsonResponse(this);
-    }
+//	private static final String NULL_JSON_RETURN = "[]";
 	
 	private int code;
 	

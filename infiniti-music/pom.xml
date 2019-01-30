@@ -93,6 +93,11 @@
 				spring-cloud-starter-netflix-eureka-client
 			</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>cn.ltysyn</groupId>
+			<artifactId>api-utils</artifactId>
+			<version>0.0.1</version>
+		</dependency>
 	</dependencies>
 
 	<build>
