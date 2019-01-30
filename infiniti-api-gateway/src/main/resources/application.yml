@@ -15,6 +15,16 @@ spring:
         uri: lb://eureka-center
         predicates:
         - Path=/api-eureka/**
+        filters:
+        - StripPrefix=1
+      - id: api-music
+        uri: lb://api-music
+        predicates:
+        - Path=/api-music/**
+        filters:
+        - GwSwaggerHeaderFilter
+        - StripPrefix=1
+        
 
 eureka:
   client:

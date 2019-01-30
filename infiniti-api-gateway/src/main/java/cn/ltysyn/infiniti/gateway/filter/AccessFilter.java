@@ -1,18 +1,20 @@
 package cn.ltysyn.infiniti.gateway.filter;
 
 import java.util.List;
+
+import javax.annotation.Resource;
+
 import org.apache.commons.lang.StringUtils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.gateway.filter.GatewayFilterChain;
 import org.springframework.cloud.gateway.filter.GlobalFilter;
 import org.springframework.core.Ordered;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.server.reactive.ServerHttpRequest;
 import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.web.server.ServerWebExchange;
 
-import cn.ltysyn.infiniti.common.redis.config.RedisOps;
 import reactor.core.publisher.Mono;
 
 @Component
@@ -21,8 +23,8 @@ public class AccessFilter implements GlobalFilter, Ordered {
 	// url 匹配器
 	private AntPathMatcher pathMatcher = new AntPathMatcher();
 	
-	@Autowired
-	private RedisOps redisOps;
+	@Resource
+	private RedisTemplate<String, Object> redisTemplate;
 	
 
 	@Override
@@ -47,7 +49,7 @@ public class AccessFilter implements GlobalFilter, Ordered {
 			} else {
 				try {
 					// redis 认证
-					String params = redisOps.get("token:" + accessToken);
+					String params = (String) redisTemplate.opsForValue().get("token:" + accessToken);
 					if (params == null || "".equals(params)) {
 						exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
 						return exchange.getResponse().setComplete();

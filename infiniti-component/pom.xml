@@ -15,7 +15,19 @@
 	<packaging>pom</packaging>
 	<name>infiniti-componet</name>
 	<description>infiniti-componet</description>
+	
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
 
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+		</plugins>
+	</build>
 
 	<modules>
 		<module>db-core</module>

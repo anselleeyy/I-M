@@ -1,4 +1,4 @@
-package cn.ltysyn.infiniti.common.redis.config;
+package cn.ltysyn.infiniti.common.db.redis;
 
 import java.util.concurrent.TimeUnit;
 
