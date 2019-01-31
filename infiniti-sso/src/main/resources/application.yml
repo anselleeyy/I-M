@@ -1,0 +1,16 @@
+server:
+  port: 10073
+  
+spring:
+  application:
+    name: api-auth-server
+
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10070/eureka
+      
+logging:
+  level:
+    root: INFO
