@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: register-center
+
+server:
+  port: 10070
+  
+eureka:
+  instance:
+    hostname: 10.11.124.102
+  server:
+    wait-time-in-ms-when-sync-empty: 0
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 10000  # 清理间隔（单位毫秒，默认是60*1000）10秒将客户端剔除的服务在服务注册列表中剔除 # 
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka

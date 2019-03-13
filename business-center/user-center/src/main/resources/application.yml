@@ -1,0 +1,39 @@
+server:
+  port: 10081
+spring:
+  application:
+    name: user-center
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://10.11.124.102:3306/auth?characterEncoding=utf8&useSSL=false&serverTimezone=UTC
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari:
+      username: ansel
+      password: Ansel0428!
+  jpa:
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      naming:
+        physical-strategy: org.springframework.boot.orm.jpa.hibernate.SpringPhysicalNamingStrategy
+    properties:
+      hibernate: 
+        dialect: org.hibernate.dialect.MySQL8Dialect
+        
+security:
+  oauth2:
+    resource:
+      user-info-uri: http://localhost:10071/auth-center/users/current
+    client:
+      client-id: user-center
+      client-secret: 123456
+      access-token-uri: http://localhost:10071/auth-center/oauth/token
+      grant-type: client_credentials,password
+      scope: server
+      
+eureka:
+  client:
+    service-url:
+      defaultZone: http://10.11.124.102:10070/eureka
+  
