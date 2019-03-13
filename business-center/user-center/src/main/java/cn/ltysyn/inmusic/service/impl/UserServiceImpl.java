@@ -5,7 +5,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import cn.ltysyn.inmusic.dao.IUserDao;
-import cn.ltysyn.inmusic.entity.User;
+import cn.ltysyn.inmusic.model.User;
 import cn.ltysyn.inmusic.service.IUserService;
 
 @Service(value = "userService")

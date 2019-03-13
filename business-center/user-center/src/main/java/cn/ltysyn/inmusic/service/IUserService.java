@@ -1,6 +1,6 @@
 package cn.ltysyn.inmusic.service;
 
-import cn.ltysyn.inmusic.entity.User;
+import cn.ltysyn.inmusic.model.User;
 
 public interface IUserService {
 	

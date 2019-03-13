@@ -1,4 +1,4 @@
-package cn.ltysyn.inmusic.entity;
+package cn.ltysyn.inmusic.model;
 
 import java.io.Serializable;
 import java.util.Collection;

@@ -1,4 +1,4 @@
-package cn.ltysyn.inmusic.entity;
+package cn.ltysyn.inmusic.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
