@@ -13,6 +13,5 @@
 	<description>内部公共组件整合</description>
 	<modules>
 		<module>api-commons</module>
-		<module>security-core</module>
 	</modules>
 </project>

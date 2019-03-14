@@ -18,16 +18,10 @@
 			<scope>provided</scope>
 		</dependency>
 		
-		<!-- 引入 spring security -->
+		<!-- 引入 spring-data-jpa -->
 		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-core</artifactId>
-		</dependency>
-		
-		<!-- javax 注解 -->
-		<dependency>
-		    <groupId>javax.persistence</groupId>
-		    <artifactId>javax.persistence-api</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jpa</artifactId>
 		</dependency>
 	</dependencies>
 </project>
