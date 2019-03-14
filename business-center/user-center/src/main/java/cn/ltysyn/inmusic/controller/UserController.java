@@ -3,6 +3,7 @@ package cn.ltysyn.inmusic.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -30,6 +31,11 @@ public class UserController {
 		LOG.info("用户登录: {}", user);
         user = userService.checkLogin(user);
         return user;
+    }
+	
+	@GetMapping(value = "/hi")
+	public Object testForToken() {
+		return "hi, you're authorized";
     }
 
 }

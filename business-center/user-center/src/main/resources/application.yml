@@ -20,17 +20,11 @@ spring:
     properties:
       hibernate: 
         dialect: org.hibernate.dialect.MySQL8Dialect
-        
-security:
-  oauth2:
-    resource:
-      user-info-uri: http://localhost:10071/auth-center/users/current
-    client:
-      client-id: user-center
-      client-secret: 123456
-      access-token-uri: http://localhost:10071/auth-center/oauth/token
-      grant-type: client_credentials,password
-      scope: server
+  redis:
+    host: 10.11.124.102
+    database: 0
+    port: 6378
+    timeout: 10000
       
 eureka:
   client:

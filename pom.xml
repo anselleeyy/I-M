@@ -43,8 +43,6 @@
 		<module>business-center</module>
 		<module>inner-integration</module>
 		<module>register-center</module>
-		<module>auth-center</module>
-		<module>api-gateway</module>
 		<module>gateway-center</module>
 	</modules>
 	

@@ -42,7 +42,8 @@ public class AccessFilter implements GlobalFilter, Ordered {
 		
 		if (pathMatcher.match(UrlPattern.SWAGGER, path)
 				|| pathMatcher.match(UrlPattern.MUSIC_CENTER, path)
-				|| pathMatcher.match(UrlPattern.USER_REGISTER, path)) {
+				|| pathMatcher.match(UrlPattern.USER_REGISTER, path)
+				|| pathMatcher.match(UrlPattern.USER_LOGIN, path)) {
 			return chain.filter(exchange);
 		}
 		
@@ -52,12 +53,12 @@ public class AccessFilter implements GlobalFilter, Ordered {
 				return exchange.getResponse().setComplete();
 			} else {
 				try {
-					String token = redisTemplate.opsForValue().get("access:" + accessToken);
+					String token = redisTemplate.opsForValue().get(accessToken);
 					if (token.isEmpty()) {
 						exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
 						return exchange.getResponse().setComplete();
 					}
-				} catch (Exception e) {
+				} catch (Exception e) {	
 					// TODO: handle exception
 					exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
 					return exchange.getResponse().setComplete();
@@ -73,7 +74,7 @@ public class AccessFilter implements GlobalFilter, Ordered {
 		List<String> strings = request.getHeaders().get("Authorization");
 		String authToken = null;
 		if (strings != null) {
-			authToken = strings.get(0).substring("Bearer".length()).trim();
+			authToken = strings.get(0).trim();
 		}
 		
 		if (StringUtils.isBlank(authToken)) {
@@ -86,6 +87,4 @@ public class AccessFilter implements GlobalFilter, Ordered {
 		return authToken;
 	}
 	
-	
-
 }
