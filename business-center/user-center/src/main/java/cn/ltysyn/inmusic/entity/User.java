@@ -21,11 +21,13 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
 @Entity(name = "t_user")
 @Data
 @EntityListeners(AuditingEntityListener.class)
+@ApiModel(value = "用户类")
 public class User implements Serializable {
 	
 	/**
@@ -37,14 +39,21 @@ public class User implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false,  unique = true)
+    @Column(nullable = false,  unique = true, length = 500)
     private String username;
 
-    @Column
+    @Column(length = 500)
     private String password;
     
-    @Column
+    @Column(length = 100)
     private String email;
+    
+    @Column(length = 11)
+    private Long phone;
+    
+    // 用户头像地址
+    @Column(length = 100)
+ 	private String avatar;
     
     @Column
     @CreatedDate
