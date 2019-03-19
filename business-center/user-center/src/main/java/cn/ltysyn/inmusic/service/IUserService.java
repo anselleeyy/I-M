@@ -4,7 +4,7 @@ import cn.ltysyn.inmusic.entity.User;
 
 public interface IUserService {
 	
-	boolean createUser(User user);
+	User createUser(User user);
 	
 	User findByUsername(String username);
 	
