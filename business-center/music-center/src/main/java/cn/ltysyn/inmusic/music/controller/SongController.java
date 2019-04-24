@@ -2,7 +2,6 @@ package cn.ltysyn.inmusic.music.controller;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,7 +15,6 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping(value = "/songs")
-@CrossOrigin
 @Api(value = "歌曲控制器")
 public class SongController extends BaseController {
 	
@@ -33,6 +31,14 @@ public class SongController extends BaseController {
 	public Object getSongById(@PathVariable Long id) {
 		Song song = songService.getById(id);
 		Response response = new Response(ReturnCode.SONG_INFO_GOT, song);
+		return response;
+	}
+	
+	@GetMapping(value = "/hot/{limit}")
+	@ApiOperation(value = "查询top歌曲", notes = "根据 limit 参数查询热门歌曲")
+	public Object getHotSongs(@PathVariable int limit) {
+		List<Song> songs = songService.getByPage(1, limit);
+		Response response = new Response(ReturnCode.SONG_INFO_GOT, songs);
 		return response;
 	}
 

@@ -2,8 +2,9 @@ package cn.ltysyn.inmusic.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,14 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
 
 import cn.ltysyn.inmusic.commons.Response;
 import cn.ltysyn.inmusic.commons.ReturnCode;
+import cn.ltysyn.inmusic.dto.PwdDto;
 import cn.ltysyn.inmusic.entity.User;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@CrossOrigin
 @RequestMapping(value = "/user")
-@Api(tags = "用户登录注册接口类")
+@Api(tags = "用户接口类")
 public class UserController extends BaseController {
 	
 	private static final Logger LOG = LoggerFactory.getLogger(UserController.class);
@@ -26,6 +27,7 @@ public class UserController extends BaseController {
 	@PostMapping(value = "/register")
 	@ApiOperation(value = "用户注册")
 	public Object createUser(@RequestBody User user) {
+		LOG.info("register user: {}", user);
 		user = userService.createUser(user);
 		Response response;
 		if (user != null) {
@@ -49,6 +51,18 @@ public class UserController extends BaseController {
 		}
         return response;
     }
+	
+	@PatchMapping(value = "/updatePwd/{id}")
+	public Object updatePassword(@PathVariable Long id, @RequestBody PwdDto pwdDto) {
+		boolean flag = userService.updatePassword(id, pwdDto);
+		Response response = new Response();
+		if (flag) {
+			response.setReturnCode(ReturnCode.USER_PASSWORD_UPDATE_SUCCEED);
+		} else {
+			response.setReturnCode(ReturnCode.USER_PASSWORD_UPDATE_FAILED);
+		}
+		return response;
+	}
 	
 	@GetMapping(value = "/hi")
 	public Object testForToken() {

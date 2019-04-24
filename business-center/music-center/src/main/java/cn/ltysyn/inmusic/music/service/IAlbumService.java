@@ -11,5 +11,7 @@ public interface IAlbumService {
 	Album getByAlbumId(Long albumId);
 	
 	List<Album> getByArtistId(Integer artistId);
+	
+	List<Album> getByPage(int page, int limit);
 
 }

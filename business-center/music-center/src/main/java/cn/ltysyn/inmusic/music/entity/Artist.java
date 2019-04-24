@@ -6,6 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import org.hibernate.annotations.GenericGenerator;
+
+import cn.ltysyn.inmusic.utils.NginxUtil;
 import lombok.Data;
 
 @Data
@@ -26,5 +28,9 @@ public class Artist implements Serializable {
 	private String artistName;
 	
 	private String picUrl;
+	
+	public String getPicUrl() {
+		return NginxUtil.NGINX_URL + this.picUrl;
+	}
 
 }

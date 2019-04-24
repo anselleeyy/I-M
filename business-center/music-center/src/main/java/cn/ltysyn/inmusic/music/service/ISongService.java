@@ -11,5 +11,7 @@ public interface ISongService {
 	Song getById(Long id);
 	
 	List<Song> getByAlbumId(Long albumId);
+	
+	List<Song> getByPage(int page, int limit);
 
 }

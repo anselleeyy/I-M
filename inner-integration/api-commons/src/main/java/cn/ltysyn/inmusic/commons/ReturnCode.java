@@ -30,6 +30,10 @@ public enum ReturnCode {
 	
 	USER_LOGIN_FAILED(40004, "用户登录失败，用户名或密码有误"),
 	
+	USER_PASSWORD_UPDATE_SUCCEED(40005, "用户密码修改成功"),
+	
+	USER_PASSWORD_UPDATE_FAILED(40006, "用户密码更新失败"),
+	
 	// 收藏服务相关
 	USER_COLLECTS_GOT(50001, "用户收藏列表获取成功");
 	

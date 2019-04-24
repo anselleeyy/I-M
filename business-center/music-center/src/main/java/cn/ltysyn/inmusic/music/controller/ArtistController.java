@@ -2,7 +2,6 @@ package cn.ltysyn.inmusic.music.controller;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +16,6 @@ import io.swagger.annotations.ApiOperation;
 
 @RestController
 @RequestMapping(value = "/artists")
-@CrossOrigin
 @Api(value = "歌手控制器")
 public class ArtistController extends BaseController {
 	
