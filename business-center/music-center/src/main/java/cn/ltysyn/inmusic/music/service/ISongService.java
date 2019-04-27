@@ -2,6 +2,8 @@ package cn.ltysyn.inmusic.music.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import cn.ltysyn.inmusic.music.entity.Song;
 
 public interface ISongService {
@@ -12,6 +14,6 @@ public interface ISongService {
 	
 	List<Song> getByAlbumId(Long albumId);
 	
-	List<Song> getByPage(int page, int limit);
+	Page<Song> getByPage(int page, int limit);
 
 }

@@ -34,6 +34,8 @@ public enum ReturnCode {
 	
 	USER_PASSWORD_UPDATE_FAILED(40006, "用户密码更新失败"),
 	
+	USER_LIST_GOT(40007, "用户列表获取成功"),
+	
 	// 收藏服务相关
 	USER_COLLECTS_GOT(50001, "用户收藏列表获取成功");
 	

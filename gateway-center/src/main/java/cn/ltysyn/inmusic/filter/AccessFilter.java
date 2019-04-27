@@ -43,7 +43,8 @@ public class AccessFilter implements GlobalFilter, Ordered {
 		if (pathMatcher.match(UrlPattern.SWAGGER, path)
 				|| pathMatcher.match(UrlPattern.MUSIC_CENTER, path)
 				|| pathMatcher.match(UrlPattern.USER_REGISTER, path)
-				|| pathMatcher.match(UrlPattern.USER_LOGIN, path)) {
+				|| pathMatcher.match(UrlPattern.USER_LOGIN, path)
+				|| pathMatcher.match(UrlPattern.USER_TEST, path)) {
 			return chain.filter(exchange);
 		}
 		

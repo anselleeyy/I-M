@@ -11,5 +11,7 @@ public class UrlPattern {
 	public static final String USER_REGISTER = "/user-center/user/register";
 	
 	public static final String	  USER_LOGIN = "/user-center/user/login/**";
+	
+	public static final String	  USER_TEST = "/user-center/user/page";
 
 }

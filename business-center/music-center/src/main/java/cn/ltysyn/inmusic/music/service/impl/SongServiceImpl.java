@@ -1,6 +1,5 @@
 package cn.ltysyn.inmusic.music.service.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -33,11 +32,12 @@ public class SongServiceImpl extends BaseService implements ISongService {
 	}
 
 	@Override
-	public List<Song> getByPage(int page, int limit) {
+	public Page<Song> getByPage(int page, int limit) {
 		// TODO Auto-generated method stub
 		Pageable pageable = PageRequest.of(page-1, limit);
 		Page<Song> pageResult = songDao.findAll(pageable);		
-		return pageResult.getContent() == null ? new ArrayList<>() : pageResult.getContent();
+//		return pageResult.getContent() == null ? new ArrayList<>() : pageResult.getContent();
+		return pageResult;
 	}
 
 }
