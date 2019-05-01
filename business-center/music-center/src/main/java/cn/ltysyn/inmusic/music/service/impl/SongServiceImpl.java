@@ -2,6 +2,8 @@ package cn.ltysyn.inmusic.music.service.impl;
 
 import java.util.List;
 
+import javax.transaction.Transactional;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -35,9 +37,36 @@ public class SongServiceImpl extends BaseService implements ISongService {
 	public Page<Song> getByPage(int page, int limit) {
 		// TODO Auto-generated method stub
 		Pageable pageable = PageRequest.of(page-1, limit);
-		Page<Song> pageResult = songDao.findAll(pageable);		
-//		return pageResult.getContent() == null ? new ArrayList<>() : pageResult.getContent();
+		Page<Song> pageResult = songDao.findAll(pageable);
 		return pageResult;
+	}
+
+	@Override
+	public boolean addSong(Song song) {
+		// TODO Auto-generated method stub
+		try {
+			songDao.save(song);
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return false;
+	}
+
+	@Override
+	@Transactional
+	public boolean updateSong(Song song, long songId) {
+		// TODO Auto-generated method stub
+		try {
+			String songName = song.getSongName();
+			String lyric = song.getLyric();
+			songDao.updateLyricAndSongName(songName, lyric, songId);
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		return false;
 	}
 
 }

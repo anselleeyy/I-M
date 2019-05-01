@@ -21,6 +21,14 @@ public enum ReturnCode {
 	
 	SONGS_IN_ALBUM_GOT(10008, "专辑内音乐数据获取成功"),
 	
+	SONG_ADD_SUCCEED(20001, "音乐添加成功"),
+	
+	SONG_ADD_FAILED(20002, "音乐添加失败"),
+	
+	SONG_UPDATE_SUCCEED(20003, "音乐信息修改成功"),
+	
+	SONG_UPDATE_FAILED(20004, "音乐信息修改失败"),
+	
 	// 用户相关
 	USER_CREATE_SUCCEED(40001, "用户注册成功"),
 	

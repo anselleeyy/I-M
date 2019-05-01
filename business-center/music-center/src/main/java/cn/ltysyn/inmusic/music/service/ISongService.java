@@ -15,5 +15,9 @@ public interface ISongService {
 	List<Song> getByAlbumId(Long albumId);
 	
 	Page<Song> getByPage(int page, int limit);
+	
+	boolean addSong(Song song);
+	
+	boolean updateSong(Song song, long songId);
 
 }
