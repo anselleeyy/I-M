@@ -22,4 +22,10 @@ public class ArtistServiceImpl extends BaseService implements IArtistService {
 		return artistDao.findByArtistId(artistId);
 	}
 
+	@Override
+	public List<Artist> searchArtist(String keyword) {
+		// TODO Auto-generated method stub
+		return artistDao.findByArtistNameLike(keyword);
+	}
+
 }

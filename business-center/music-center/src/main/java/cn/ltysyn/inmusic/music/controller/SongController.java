@@ -117,5 +117,18 @@ public class SongController extends BaseController {
 		}
 		return response;
 	}
+	
+	/**
+	 * 搜索接口
+	 * 
+	 * @param keyword
+	 * @return
+	 */
+	@GetMapping(value = "/search")
+	public Object searchSong(@RequestParam String keyword) {
+		List<Song> songs = songService.searchSong("%" + keyword + "%");
+		Response response = new Response(ReturnCode.SONG_INFO_GOT, songs);
+		return response;
+	}
 
 }

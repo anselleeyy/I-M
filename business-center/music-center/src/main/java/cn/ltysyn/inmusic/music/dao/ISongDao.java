@@ -21,5 +21,8 @@ public interface ISongDao extends JpaRepository<Song, Long> {
 	@Modifying
 	@Query(value = "update t_song set song_name = ?1, lyric = ?2 where song_id = ?3", nativeQuery = true)
 	void updateLyricAndSongName(String songName, String lyric, long songId);
+	
+	@Query(value = "select * from t_song where song_name like ?1 limit 10", nativeQuery = true)
+	List<Song> findBySongNameLike(String keyword);
 
 }

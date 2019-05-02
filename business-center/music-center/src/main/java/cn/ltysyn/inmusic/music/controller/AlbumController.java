@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import cn.ltysyn.inmusic.commons.Response;
@@ -48,6 +49,32 @@ public class AlbumController extends BaseController {
 	public Object getHotAlbums(@PathVariable int limit) {
 		List<Album> albums = albumService.getByPage(1, limit);
 		Response response = new Response(ReturnCode.ALBUM_LIST_GOT, albums);
+		return response;
+	}
+	
+	/**
+	 * 根据 publishTime 降序搜索
+	 * @param limit
+	 * @return
+	 */
+	@GetMapping(value = "/page/time")
+	public Object getAlbumsOrderByPublishTime(@RequestParam int page, @RequestParam int size) {
+		List<Album> albums = albumService.getByPageOrderByPublishTime(page, size);
+		Response response = new Response(ReturnCode.ALBUM_LIST_GOT, albums);
+		return response;
+	}
+	
+	/**
+	 * 专辑搜索接口
+	 * 
+	 * @param keyword
+	 * @return
+	 */
+	@GetMapping(value = "/search")
+	public Object searchAlbum(@RequestParam String keyword) {
+		System.out.println(keyword);
+		List<Album> list = albumService.searchAlbum("%" + keyword + "%");
+		Response response = new Response(ReturnCode.ALBUM_LIST_GOT, list);
 		return response;
 	}
 

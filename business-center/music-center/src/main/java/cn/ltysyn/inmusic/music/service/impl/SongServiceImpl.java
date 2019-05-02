@@ -69,4 +69,10 @@ public class SongServiceImpl extends BaseService implements ISongService {
 		return false;
 	}
 
+	@Override
+	public List<Song> searchSong(String keyword) {
+		// TODO Auto-generated method stub
+		return songDao.findBySongNameLike(keyword);
+	}
+
 }

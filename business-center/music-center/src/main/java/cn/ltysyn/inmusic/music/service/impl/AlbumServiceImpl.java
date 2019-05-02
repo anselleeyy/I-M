@@ -40,4 +40,18 @@ public class AlbumServiceImpl extends BaseService implements IAlbumService {
 		return pageResult.getContent() == null ? new ArrayList<>() : pageResult.getContent();
 	}
 
+	@Override
+	public List<Album> getByPageOrderByPublishTime(int page, int limit) {
+		// TODO Auto-generated method stub
+		Pageable pageable = PageRequest.of(page-1, limit);
+		Page<Album> pageResult = albumDao.findByOrderByPublishTimeDesc(pageable);
+		return pageResult.getContent() == null ? new ArrayList<>() : pageResult.getContent();
+	}
+
+	@Override
+	public List<Album> searchAlbum(String keyword) {
+		// TODO Auto-generated method stub
+		return albumDao.findByAlbumNameLike(keyword);
+	}
+
 }

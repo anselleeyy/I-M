@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import cn.ltysyn.inmusic.commons.Response;
@@ -40,6 +41,13 @@ public class ArtistController extends BaseController {
 	public Object getAlbumsByArtistId(@PathVariable Integer artistId) {
 		List<Album> albums = albumService.getByArtistId(artistId);
 		Response response = new Response(ReturnCode.ALBUMS_IN_ARTIST_GOT, albums);
+		return response;
+	}
+	
+	@GetMapping(value = "/search")
+	public Object searchArtist(@RequestParam String keyword) {
+		List<Artist> artists = artistService.searchArtist("%" + keyword + "%");
+		Response response = new Response(ReturnCode.ARTIST_LIST_GOT, artists);
 		return response;
 	}
 

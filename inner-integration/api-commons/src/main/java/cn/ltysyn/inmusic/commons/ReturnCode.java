@@ -45,7 +45,15 @@ public enum ReturnCode {
 	USER_LIST_GOT(40007, "用户列表获取成功"),
 	
 	// 收藏服务相关
-	USER_COLLECTS_GOT(50001, "用户收藏列表获取成功");
+	USER_COLLECTS_GOT(50001, "用户收藏列表获取成功"),
+	
+	USER_COLLECT_SUCCEED(50002, "用户收藏成功"),
+	
+	USER_COLLECT_FAILED(50003, "用户收藏失败"),
+	
+	USER_DEL_COLLECT_SUCCEED(50004, "用户删除收藏成功"),
+	
+	USER_DEL_COLLECT_FAILED(50005, "用户删除收藏失败");
 	
 	private int code;
 	

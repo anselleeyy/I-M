@@ -21,6 +21,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import cn.ltysyn.inmusic.utils.NginxUtil;
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
@@ -54,6 +55,10 @@ public class User implements Serializable {
     // 用户头像地址
     @Column(length = 100)
  	private String avatar;
+    
+    public String getAvatar() {
+		return this.avatar.startsWith("http") ? this.avatar : NginxUtil.NGINX_URL + this.avatar;
+	}
     
     @Column
     @CreatedDate

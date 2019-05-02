@@ -19,6 +19,7 @@ import com.alibaba.fastjson.JSON;
 import cn.ltysyn.inmusic.dto.PwdDto;
 import cn.ltysyn.inmusic.entity.User;
 import cn.ltysyn.inmusic.service.IUserService;
+import cn.ltysyn.inmusic.utils.NginxUtil;
 import cn.ltysyn.inmusic.utils.TokenUtil;
 
 @Service(value = "userService")
@@ -39,6 +40,7 @@ public class UserServiceImpl extends BaseService implements IUserService {
 			// 加密密码
 			String hash = encoder.encode(user.getPassword());
 			user.setPassword(hash);
+			user.setAvatar(NginxUtil.COMMON_AVATAR);
 			try {
 				result = userDao.save(user);
 				return result;
@@ -62,7 +64,6 @@ public class UserServiceImpl extends BaseService implements IUserService {
 		// TODO Auto-generated method stub
 		String username = user.getUsername();
 		User realUser = userDao.findByUsername(username);
-		LOG.debug("数据库信息: {}", realUser);
 		if (encoder.matches(user.getPassword(), realUser.getPassword())) {
 			String token = TokenUtil.generateToken();
 			LOG.info("token: {}", token);
@@ -83,6 +84,7 @@ public class UserServiceImpl extends BaseService implements IUserService {
 			return false;
 		}
 		User user = userDao.findById(id).get();
+		// 校验旧密码是否正确
 		if (encoder.matches(oldPassword, user.getPassword())) {
 			// 开始更新密码
 			userDao.updatePassword(encoder.encode(newPassword));

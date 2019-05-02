@@ -19,5 +19,7 @@ public interface ISongService {
 	boolean addSong(Song song);
 	
 	boolean updateSong(Song song, long songId);
+	
+	List<Song> searchSong(String keyword);
 
 }

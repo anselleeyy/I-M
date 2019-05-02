@@ -9,5 +9,7 @@ public interface IArtistService {
 	List<Artist> getAllArtists();
 	
 	Artist getByArtistId(Integer artistId);
+	
+	List<Artist> searchArtist(String keyword);
 
 }
