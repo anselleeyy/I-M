@@ -61,6 +61,7 @@ public class FileUpload {
 	}
 	
 	public static String saveMp3(long artistId, long albumId, MultipartFile file) {
+		// 利用 UUID 生成唯一字符串作为音乐的路径名
 		String hashName = UUID.randomUUID().toString().replace("-", "");
 		Path filePath = null;
 		try {

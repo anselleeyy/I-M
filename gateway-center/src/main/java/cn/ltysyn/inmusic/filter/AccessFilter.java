@@ -79,7 +79,7 @@ public class AccessFilter implements GlobalFilter, Ordered {
 		}
 		
 		if (StringUtils.isBlank(authToken)) {
-			strings = request.getQueryParams().get("access_token");
+			strings = request.getHeaders().get("access_token");
 			if (strings != null) {
 				authToken = strings.get(0);
 			}
