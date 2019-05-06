@@ -53,7 +53,14 @@ public enum ReturnCode {
 	
 	USER_DEL_COLLECT_SUCCEED(50004, "用户删除收藏成功"),
 	
-	USER_DEL_COLLECT_FAILED(50005, "用户删除收藏失败");
+	USER_DEL_COLLECT_FAILED(50005, "用户删除收藏失败"),
+	
+	// 管理员相关
+	REDIS_KEY_GOT(60001, "redis 所有 key 获取成功"),
+	
+	REDIS_MEMORY_GOT(60002, "redis 内存信息获取成功"),
+	
+	REDIS_INFO_GOT(60003, "redis 信息获取成功");
 	
 	private int code;
 	
