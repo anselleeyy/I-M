@@ -60,7 +60,13 @@ public enum ReturnCode {
 	
 	REDIS_MEMORY_GOT(60002, "redis 内存信息获取成功"),
 	
-	REDIS_INFO_GOT(60003, "redis 信息获取成功");
+	REDIS_INFO_GOT(60003, "redis 信息获取成功"),
+	
+	ADMIN_LOGIN_SUCCEED(60004, "管理员登录成功"),
+	
+	ADMIN_LOGIN_AUTH_FAILED(60005, "权限不足"),
+    
+	ADMIN_LOGIN_FAILED(60006, "用户登录失败，用户名或密码有误"),;
 	
 	private int code;
 	
