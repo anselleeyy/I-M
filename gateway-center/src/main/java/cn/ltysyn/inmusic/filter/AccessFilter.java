@@ -34,8 +34,7 @@ public class AccessFilter implements GlobalFilter, Ordered {
 
 	@Override
 	public Mono<Void> filter(ServerWebExchange exchange, GatewayFilterChain chain) {
-		// TODO Auto-generated method stub
-		
+
 		String accessToken = extractToken(exchange.getRequest());
 		
 		String path = exchange.getRequest().getPath().value();
@@ -44,48 +43,45 @@ public class AccessFilter implements GlobalFilter, Ordered {
 				|| pathMatcher.match(UrlPattern.MUSIC_CENTER, path)
 				|| pathMatcher.match(UrlPattern.USER_REGISTER, path)
 				|| pathMatcher.match(UrlPattern.USER_LOGIN, path)
-				|| pathMatcher.match(UrlPattern.USER_TEST, path)) {
+				|| pathMatcher.match(UrlPattern.ADMIN_LOGIN, path)) {
 			return chain.filter(exchange);
 		}
 		
-		if (!pathMatcher.match(UrlPattern.OAUTH_CENTER, path)) {
-			if (accessToken == null) {
-				exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
-				return exchange.getResponse().setComplete();
-			} else {
-				try {
-					String token = redisTemplate.opsForValue().get(accessToken);
-					if (token.isEmpty()) {
-						exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
-						return exchange.getResponse().setComplete();
-					}
-				} catch (Exception e) {	
-					// TODO: handle exception
-					exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
-					return exchange.getResponse().setComplete();
-				}
-			}
-		}
+		if (accessToken == null) {
+            exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
+            return exchange.getResponse().setComplete();
+        } else {
+            try {
+                String token = redisTemplate.opsForValue().get(accessToken);
+                if (token.isEmpty()) {
+                    exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
+                    return exchange.getResponse().setComplete();
+                }
+            } catch (Exception e) { 
+                exchange.getResponse().setStatusCode(HttpStatus.UNAUTHORIZED);
+                return exchange.getResponse().setComplete();
+            }
+        }
 		
 		return chain.filter(exchange);
 
 	}
-	
-	protected String extractToken(ServerHttpRequest	request) {
-		List<String> strings = request.getHeaders().get("Authorization");
-		String authToken = null;
-		if (strings != null) {
-			authToken = strings.get(0).trim();
-		}
-		
-		if (StringUtils.isBlank(authToken)) {
-			strings = request.getQueryParams().get("access_token");
-			if (strings != null) {
-				authToken = strings.get(0);
-			}
-		}
-		
-		return authToken;
-	}
-	
+
+    private String extractToken(ServerHttpRequest request) {
+        List<String> strings = request.getHeaders().get("Authorization");
+        String authToken = null;
+        if (null != strings) {
+            authToken = strings.get(0).trim();
+        }
+
+        if (StringUtils.isBlank(authToken)) {
+            strings = request.getQueryParams().get("access_token");
+            if (null != strings) {
+                authToken = strings.get(0);
+            }
+        }
+
+        return authToken;
+    }
+
 }

@@ -18,23 +18,16 @@ spring:
         - Path=/eureka-center/**
         filters:
         - StripPrefix=1
-      - id: auth-center
-        uri: lb://auth-center
-        order: 8001
-        predicates:
-        - Path=/auth-center/**
-        filters:
-        - StripPrefix=1
       - id: music-center
         uri: lb://music-center
-        order: 8002
+        order: 8001
         predicates:
         - Path=/music-center/**
         filters:
         - StripPrefix=1
       - id: user-center
         uri: lb://user-center
-        order: 8003
+        order: 8002
         predicates:
         - Path=/user-center/**
         filters:
