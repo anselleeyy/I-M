@@ -66,6 +66,26 @@ public class AccessFilter implements GlobalFilter, Ordered {
 		return chain.filter(exchange);
 
 	}
+<<<<<<< HEAD
+
+    private String extractToken(ServerHttpRequest request) {
+        List<String> strings = request.getHeaders().get("Authorization");
+        String authToken = null;
+        if (null != strings) {
+            authToken = strings.get(0).trim();
+        }
+
+        if (StringUtils.isBlank(authToken)) {
+            strings = request.getQueryParams().get("access_token");
+            if (null != strings) {
+                authToken = strings.get(0);
+            }
+        }
+
+        return authToken;
+    }
+
+=======
 	
 	protected String extractToken(ServerHttpRequest	request) {
 		List<String> strings = request.getHeaders().get("Authorization");
@@ -84,4 +104,5 @@ public class AccessFilter implements GlobalFilter, Ordered {
 		return authToken;
 	}
 	
+>>>>>>> e2d0f46a67b2f95ef3f7764a7127d85e7bc5d354
 }
