@@ -7,8 +7,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import cn.ltysyn.inmusic.music.entity.Album;
+import cn.ltysyn.inmusic.music.entity.Song;
 import cn.ltysyn.inmusic.music.service.IAlbumService;
 
 @Service(value = "albumService")
@@ -52,6 +54,44 @@ public class AlbumServiceImpl extends BaseService implements IAlbumService {
 	public List<Album> searchAlbum(String keyword) {
 		// TODO Auto-generated method stub
 		return albumDao.findByAlbumNameLike(keyword);
+	}
+
+	@Override
+	public Page<Album> getAllByPage(int page, int limit) {
+		// TODO Auto-generated method stub
+		Pageable pageable = PageRequest.of(page-1, limit);
+		return albumDao.findAll(pageable);
+	}
+
+	@Override
+	public boolean addAlbum(Album album) {
+		// TODO Auto-generated method stub
+		try {
+			albumDao.save(album);
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return false;
+	}
+
+	@Override
+	@Transactional
+	public boolean delAlbum(long albumId) {
+		// TODO Auto-generated method stub
+		try {
+			// 删除专辑
+			albumDao.deleteById(albumId);
+			// 同时删除该专辑下所有的音乐
+			List<Song> songs = songDao.findByAlbumId(albumId);
+			songs.stream().forEach(song -> {
+				songDao.deleteById(song.getSongId());
+			});
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return false;
 	}
 
 }

@@ -29,6 +29,34 @@ public enum ReturnCode {
 	
 	SONG_UPDATE_FAILED(20004, "音乐信息修改失败"),
 	
+	SONG_DELETE_SUCCEED(20005, "音乐信息删除成功"),
+	
+	SONG_DELETE_FAILED(20006, "音乐信息删除失败"),
+	
+	ALBUM_ADD_SUCCEED(20007, "专辑添加成功"),
+	
+	ALBUM_ADD_FAILED(20008, "专辑添加失败"),
+	
+	ALBUM_UPDATE_SUCCEED(20009, "专辑信息修改成功"),
+	
+	ALBUM_UPDATE_FAILED(20010, "专辑信息修改失败"),
+	
+	ALBUM_DELETE_SUCCEED(20011, "专辑信息删除成功"),
+	
+	ALBUM_DELETE_FAILED(20012, "专辑信息删除失败"),
+	
+	ARTIST_ADD_SUCCEED(20013, "歌手添加成功"),
+	
+	ARTIST_ADD_FAILED(20014, "歌手添加失败"),
+	
+	ARTIST_UPDATE_SUCCEED(20015, "歌手信息修改成功"),
+	
+	ARTIST_UPDATE_FAILED(20016, "歌手信息修改失败"),
+	
+	ARTIST_DELETE_SUCCEED(20017, "歌手信息删除成功"),
+	
+	ARTIST_DELETE_FAILED(20018, "歌手信息删除失败"),
+	
 	// 用户相关
 	USER_CREATE_SUCCEED(40001, "用户注册成功"),
 	

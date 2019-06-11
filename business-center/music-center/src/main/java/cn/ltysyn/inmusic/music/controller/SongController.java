@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.data.domain.Page;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -128,6 +129,18 @@ public class SongController extends BaseController {
 	public Object searchSong(@RequestParam String keyword) {
 		List<Song> songs = songService.searchSong("%" + keyword + "%");
 		Response response = new Response(ReturnCode.SONG_INFO_GOT, songs);
+		return response;
+	}
+	
+	@DeleteMapping(value = "/delete/{songId}")
+	public Object deleteSong(@PathVariable long songId) {
+		Response response = null;
+		boolean flag = songService.delSong(songId);
+		if (flag) {
+			response = new Response(ReturnCode.SONG_DELETE_SUCCEED);
+		} else {
+			response = new Response(ReturnCode.SONG_DELETE_FAILED);
+		}
 		return response;
 	}
 

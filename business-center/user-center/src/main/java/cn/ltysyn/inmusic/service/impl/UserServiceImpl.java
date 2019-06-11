@@ -64,12 +64,16 @@ public class UserServiceImpl extends BaseService implements IUserService {
 		// TODO Auto-generated method stub
 		String username = user.getUsername();
 		User realUser = userDao.findByUsername(username);
-		if (encoder.matches(user.getPassword(), realUser.getPassword())) {
-			String token = TokenUtil.generateToken();
-			LOG.info("token: {}", token);
-			realUser.setToken(token);
-			redisTemplate.boundValueOps(token).set(JSON.toJSONString(realUser), TokenUtil.TOKEN_EXPIRE_HOUR, TimeUnit.HOURS);
-			return realUser;
+		// 用户存在
+		if (null != realUser) {
+			// 密码正确
+			if (encoder.matches(user.getPassword(), realUser.getPassword())) {
+				String token = TokenUtil.generateToken();
+				LOG.info("token: {}", token);
+				realUser.setToken(token);
+				redisTemplate.boundValueOps(token).set(JSON.toJSONString(realUser), TokenUtil.TOKEN_EXPIRE_HOUR, TimeUnit.HOURS);
+				return realUser;
+			}
 		}
 		return null;
 	}

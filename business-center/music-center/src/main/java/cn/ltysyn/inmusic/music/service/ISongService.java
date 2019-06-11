@@ -21,5 +21,7 @@ public interface ISongService {
 	boolean updateSong(Song song, long songId);
 	
 	List<Song> searchSong(String keyword);
+	
+	boolean delSong(long songId);
 
 }

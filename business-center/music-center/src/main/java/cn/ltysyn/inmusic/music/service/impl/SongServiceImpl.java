@@ -2,12 +2,11 @@ package cn.ltysyn.inmusic.music.service.impl;
 
 import java.util.List;
 
-import javax.transaction.Transactional;
-
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import cn.ltysyn.inmusic.music.entity.Song;
 import cn.ltysyn.inmusic.music.service.ISongService;
@@ -73,6 +72,19 @@ public class SongServiceImpl extends BaseService implements ISongService {
 	public List<Song> searchSong(String keyword) {
 		// TODO Auto-generated method stub
 		return songDao.findBySongNameLike(keyword);
+	}
+
+	@Override
+	@Transactional
+	public boolean delSong(long songId) {
+		// TODO Auto-generated method stub
+		try {
+			songDao.deleteById(songId);
+			return true;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return false;
 	}
 
 }

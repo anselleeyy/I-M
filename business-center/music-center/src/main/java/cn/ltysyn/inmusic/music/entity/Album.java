@@ -5,8 +5,9 @@ import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.hibernate.annotations.GenericGenerator;
 
 import cn.ltysyn.inmusic.utils.NginxUtil;
 import lombok.Data;
@@ -21,7 +22,8 @@ public class Album implements Serializable {
 	private static final long serialVersionUID = 8473540183217056433L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(generator = "id")
+	@GenericGenerator(name = "id", strategy = "assigned")
 	private Long albumId;
 	
 	@Column(length = 500)

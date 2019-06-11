@@ -2,6 +2,8 @@ package cn.ltysyn.inmusic.music.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+
 import cn.ltysyn.inmusic.music.entity.Album;
 
 public interface IAlbumService {
@@ -17,5 +19,11 @@ public interface IAlbumService {
 	List<Album> getByPageOrderByPublishTime(int page, int limit);
 	
 	List<Album> searchAlbum(String keyword);
+	
+	Page<Album> getAllByPage(int page, int limit);
+	
+	boolean addAlbum(Album album);
+	
+	boolean delAlbum(long albumId);
 
 }
